@@ -118,6 +118,22 @@ R3 advances Rosetta from governed assistance to deterministic, self-guarding exe
 
 *Release scope: **R3** is the live, served release. **R2** is the previous release, receiving backports only. Other tags are release-agnostic: **Tooling** (plugin generator, rosettify), **Server** (MCP server, Helm), **Hooks**, **CI**, **Docs**.*
 
+### Week Mon 21.09 – Sun 27.09
+
+GitHub Copilot's standalone install got simpler: it no longer asks users to hand-merge Rosetta's instructions into an existing `.github/copilot-instructions.md`, and JetBrains now follows the same steps as VS Code instead of a separate manual procedure.
+
+**Highlights**
+
+- Copilot standalone install drops the "merge contents into `.github/copilot-instructions.md`" step from `INSTALLATION.md`, `PLUGINS.md`, and their web mirrors
+- JetBrains Copilot testing collapses into the same procedure as VS Code, checking for `.github/instructions/plugin-files-mode.instructions.md` and `.github/instructions/bootstrap-alwayson.instructions.md`
+- `USAGE_GUIDE.md` and `llms-full.txt` updated to match: Copilot's project-rules path is `.github/instructions/*.instructions.md`
+- Routine: a repeated typo ("faiures" → "failures") fixed across seven skill files
+
+#### Copilot standalone install simplified
+
+- **Change.** `[Docs]` Copilot's standalone package now relies on its native `.github/instructions/*.instructions.md` convention instead of a single shared `.github/copilot-instructions.md`, removing the instruction to manually merge Rosetta content into a pre-existing file. The JetBrains-specific manual setup in `docs/TESTING-PLUGINS.md` (copy into `.github`, hand-append plugin-files-mode content) is replaced by the same two-step check used for VS Code. `USAGE_GUIDE.md`'s rules table and `llms-full.txt` are updated to match. (Igor Solomatov, isolomatov-gd)
+- **Why it helps.** A manual merge step risked users losing their own `copilot-instructions.md` content, or skipping the merge and losing Rosetta's. JetBrains and VS Code Copilot users now follow one procedure instead of two that could drift apart.
+
 ### Week Mon 14.09 – Sun 20.09
 
 The README's skill list is replaced with a full catalog: all 42 skills grouped into 11 task-shaped categories (decide what to build, build it, stay safe, recover when it goes wrong, extend, domain packs, and more), instead of two flat top-N lists that had drifted out of sync with what actually ships. Each skill's own README gained a matching one-line pitch, written from the reader's job to be done rather than paraphrased from its "Why it exists" section.
